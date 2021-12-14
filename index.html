@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Checklist 1</title>
+</head>
+<style type="text/css">
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	.arial {
+		font-family: "Arial";
+	}
+
+	.dark-mode {
+        background-color: #222222;
+        color: white;
+     }
+
+     .zm {
+     	transition: transform .3s ease;
+     }
+
+     .zm:hover {
+     	transform: scale(1.25);
+     }
+</style>
+<body>
+	<center>
+		<h1>Checklist</h1>
+		<br>
+
+		<div style="charboxs" id="charbox">
+			<input type="checkbox" id="scales" name="scales" unchecked>
+			<input id="input1" style="display: inline-block; width: 800px;" type="" name="">
+		</div>
+
+		<br>
+		<button onclick="add()">Dodaj Pole</button>
+		<button style="display: inline-block;" onclick="Darkmode()">Dark Mode</button>
+		<a href="index.html"><button style="display: inline-block;">Usuń Listę</button></a>
+
+        <br><br>
+        
+	</center>
+
+	<div>
+		<center>
+			<a href="https://github.com/SGASmartBee/CheckList"><img class="zm" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Fgithub%2Fgithub_PNG40.png&f=1&nofb=1" style="height: 128px; width: 128px;"></a>
+		</center>
+		<h4 class="arial" style="width: 530px; margin-left: 25px;">Rightclick > zapisz jako > html (zapisanie strony i zmian na niej)</h4>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	function add() {
+		var elem = document.querySelector('#charbox');
+        var clone = elem.cloneNode(true);
+        clone.id = 'charbox2';
+        elem.after(clone);
+        document.getElementById('input1').value = ''
+    }
+
+    function Darkmode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+
+    var formSubmitting = false;
+    var setFormSubmitting = function() { formSubmitting = true; };
+
+    window.onload = function() {
+    window.addEventListener("beforeunload", function (e) {
+        if (formSubmitting) {
+            return undefined;
+        }
+
+        // kradzione z githuba xD nie wiedziałem jak zrobić takie coś
+        var confirmationMessage = 'It looks like you have been editing something. '
+                                + 'If you leave before saving, your changes will be lost.';
+        
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+    });
+    };
+
+</script>
